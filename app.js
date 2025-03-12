@@ -15,13 +15,26 @@ function agregarAmigo() {
     }
 
     // Actualizar el array de amigos
-    amigos.push(amigo);
+    amigos.push(nombreAmigo);
 
-    // Crear un nuevo elemento de lista y agregarlo a la lista de amigos.
-    const li = document.createElement('li');
-    li.textContent = nombreAmigo;
-    document.getElementById('listaAmigos').appendChild(li);
+    // Actualizar la lista HTML
+    actualizarListaAmigos();
 
     // Limpiar el campo de entrada
     document.getElementById('amigo').value = '';
+}
+
+function actualizarListaAmigos() {
+    // Obtener el elemento de la lista
+    const lista = document.getElementById('listaAmigos');
+    // Limpiar lista existente
+    lista.innerHTML = '';
+    // Recorrer arreglo e iterar elemento <li>
+    for (let i = 0; i < amigos.length; i++) {
+        // Crear un nuevo elemento para cada amigo
+        const li = document.createElement('li');
+        li.textContent = amigos[i];
+        // agregar el nuevo elemento <li> a la lista
+        lista.appendChild(li);
+    }
 }
